@@ -1,0 +1,28 @@
+apiVersion: v2
+publisher: wfion
+name: hello_world
+version: 1.0
+type: Visual Studio Code extension
+displayName: wf_hello_world
+title: wf_hello_world
+description: wf_hello_world
+icon: https://raw.githubusercontent.com/redhat-developer/codeready-workspaces/crw-2-rhel-8/dependencies/che-plugin-registry/resources/images/default.svg?sanitize=true
+repository: https://github.com/wfion/helloworld
+category: Other
+firstPublicationDate: '2022-03-18'
+spec:
+  containers:                                                   
+    - image: nginx:latest
+      command: ['nginx-debug', '-g', 'daemon off;']
+      endpoints:
+         - name: maven-server
+           targetPort: 80
+           configuration:
+             protocol: tcp
+             scheme: http
+             secure: 'true'
+             public: 'true'
+             discoverable: 'false'
+  extensions:
+  - "https://github.com/wfion/helloworld/releases/download/test1/helloworld-0.0.1.vsix" 
+latestUpdateDate: "2022-03-18"
